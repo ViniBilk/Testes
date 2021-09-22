@@ -9,7 +9,6 @@ import { CheckInScreen } from "./components/CheckInScreen"
 import { CheckOutScreen } from './components/CheckOutScreen';
 
 const Stack = createNativeStackNavigator();
-//Testes
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

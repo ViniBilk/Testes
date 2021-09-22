@@ -9,7 +9,7 @@ export function CheckOutScreen({navigation}) {
     return (
         <View style={styles.container}>
         <Text style={styles.text}>Check-Out</Text>
-        <Scanner/>
+        <Scanner type="checkout"/>
         <AppButton title="Go Back" onPress={() => navigation.goBack()}/>
       </View>
     );

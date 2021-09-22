@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import hotelServices from '../../src/services/hotelServices';
 
-export default function Scanner() {
+export default function Scanner(props) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -15,7 +16,18 @@ export default function Scanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+
+    console.log(data)
+    console.log(props.type)
+
+    if(props.type == "checkin"){
+      const res = hotelServices.CheckIn(data)
+      alert("Check-in!")
+    }else if (props.type == "checkout"){
+      const res = hotelServices.CheckOut(data)
+      alert("Check-Out!")
+    }
+    
   };
 
   if (hasPermission === null) {
